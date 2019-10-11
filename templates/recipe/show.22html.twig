@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recipe
+{% endblock %}
+
+{% block body %}
+    <div class="col-12">
+        <div class="row">
+            <div class="col-6 m-auto">{{ recipe.title }}
+                <h3>Les informations:</h3>
+                
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ recipe.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ recipe.title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Illustration:</th>
+                            <td><img src="{{recipe.picture}}" alt="photo_de_recette"></td>
+                        </tr>
+                        <tr>
+                            <th>Temps de préparations:
+                            </th>
+                            <td>{{ recipe.preparationTime }}
+                                min</td>
+                        </tr>
+                        <tr>
+                            <th>Temps de cuisson:</th>
+                            <td>{{ recipe.CookingTime }}
+                                min
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Prix</th>
+                            <td>{{ recipe.Price }}
+                                €
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6 m-auto">
+       
+                <h3> Etapes : </h3>
+                <ul>
+                    {% for step in recipe.steps %}
+                        <li>
+                            <strong>Step</strong>
+                            {{step.spot}}
+                            :
+                            <medium>{{step.description}}</medium>
+                        </li>
+                    </ul>
+                    {% endfor %}
+
+            </div>        <div class="w3-row">
+    <div class="w3-half">
+      <img src="{{recipe.picture}}" alt="photo_de_recette" style="width:20%">
+      <img src="{{recipe.picture}}" alt="photo_de_recette" style="width:20%">
+      <img src="{{recipe.picture}}" alt="photo_de_recette" style="width:20%">
+    </div>              
+        </div>
+    </div>
+
+</div>
+<a href="{{ path('recipe_index') }}" class="btn btn-info mg-auto">Retour aux recettes</a>
+<a href="{{ path('recipe_edit', {'id': recipe.id}) }}" class="btn btn-danger mg-auto">editez</a>
+{% for comment in recipe.comments %}
+
+
+    <div class="col-lg-5 mb-4 bg-white text-black shadow p-3 mb-5 ml-auto mr-auto">
+
+        <h6> <strong>{{comment.author}}</strong> </h6>
+        <h6>{{comment.message}}</h6>
+
+    </div>
+
+{% endfor %}
+<div class="col-lg-6 m-auto">
+    {{form_start(boudin)}}
+    {{form_row(boudin.author)}}
+    {{form_row(boudin.message)}}
+    {{form_rest(boudin.author)}}
+    {{form_row(boudin.submit)}}
+    {{form_end(boudin)}}
+</div>
+{{ include('recipe/_delete_form.html.twig') }}{% endblock %}

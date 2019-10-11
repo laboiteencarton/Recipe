@@ -1,0 +1,45 @@
+img {
+  width:200px;
+  height: 20Opx;
+  border: 1px black solid;
+}
+.col-sm-4{
+  margin-top: 20px;
+}
+.col-sm-4:hover
+{
+transform:scale(1.1);
+transition: all ease 0.7s;
+}
+
+.icon
+{
+  width: 10px;
+  height: 10px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+}
+.carousel-indicators li, .carousel-indicators li.active {
+  float: left;
+  width: 33%;
+  height: 10px;
+  margin: 0;
+  border-radius: 0;
+  border: 0;
+  background: #ccc;
+}
+.carousel-indicators li.active {
+  background: orange;
+}
+
+.comment:hover
+{
+ background:black;
+}
